@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
     private fun extractSharedUrl(intent: Intent?): String? {
         if (intent?.action != Intent.ACTION_SEND || intent.type != "text/plain") return null
         val text = intent.getStringExtra(Intent.EXTRA_TEXT) ?: return null
-        return Regex("https://[^\s]+").find(text)?.value
+        return Regex("https://\\S+").find(text)?.value
     }
 }
 
